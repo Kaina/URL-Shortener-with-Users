@@ -1,0 +1,25 @@
+<div class="container">
+  <h1>Url Shortener</h1>
+
+  <% if @url && @url.errors.any? %>
+    <div class="errors">
+      <ul>
+        <% @url.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <form action="/urls" method="post">
+    <input type="text" name="url" placeholder="paste a url">
+    <input type="submit" value="Shorten!!?!">
+  </form>
+
+  <ul>
+    <% @urls.each do |url| %>
+    <li><a href="/<%= url.short_url %>"><%= url.short_url %> - <%= url.long_url %></a><span> <%= url.click_count %> </span></li>
+    <% end %>
+  </ul>
+
+</div>

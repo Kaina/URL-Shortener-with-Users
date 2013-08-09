@@ -1,0 +1,19 @@
+<div>
+  
+  <table>
+    <tr>
+    <th>Long URL Name</th>
+    <th>Short URL Name</th>
+    <th>URL Click Count</th>
+    </tr>
+    <tr>
+      <td><%= @url.long_url %></td>
+      <td><a href="/<%= @url.short_url %> "><%= @url.short_url %></a></td>
+      <td><%= @url.click_count %></td>
+    </tr>
+
+  </table>
+
+
+</div>
+

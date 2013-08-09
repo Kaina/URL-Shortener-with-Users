@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- 
+    normalize.css removes cross-browser differences in defaults, e.g.,
+    differences in how form elements appear between Firefox and IE
+    See: http://necolas.github.com/normalize.css/
+  -->
+  <link rel="stylesheet" href="/css/normalize.css">
+  <!--
+    application.css is where you put your styles
+  -->
+  <link rel="stylesheet" href="/css/application.css">
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="/js/application.js"></script>
+
+  <title></title>
+</head>
+<body>
+  <div class="authentication">
+    <ul>
+      <% unless current_user %>
+        <li><a href="/sign_up">Sign up</a></li>
+        <form action="/sign_in" method="post">
+          <li><input type="text" name="email" placeholder="Enter email"></li>
+          <li><input type="password" name="password" placeholder="Enter password"></li>
+          <li><input type="submit" value="Sign In">
+        </form>
+      <% else %>
+          <li><a href="/sign_out">Sign Out</a></li>
+          <li>Hello, <%= current_user.name %></li>
+      <% end %>
+    </ul>  
+  </div>
+  <%= yield %>
+</body>
+</html>
